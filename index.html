@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV Adhi Rajasa Satria</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+
+    /* Body background */
+    body {
+      background-image: url('images/background.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-color: #f8fafc;
+      color: #1f2937;
+    }
+
+    /* Section semi-transparan agar background.jpg terlihat */
+    .section-white { background-color: rgba(255,255,255,0.80) !important; }
+    .section-gray  { background-color: rgba(243,246,250,0.82) !important; }
+
+    .gradient-bg { background: linear-gradient(135deg, #0f2c5e 0%, #1a4a8a 50%, #2563eb 100%); }
+    .gradient-text { background: linear-gradient(135deg, #2563eb, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(37,99,235,0.15); }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#2563eb; transition: width 0.3s; }
+    .nav-link:hover::after { width:100%; }
+    #navbar { transition: all 0.3s ease; }
+    .section-divider { height:4px; width:60px; background:linear-gradient(90deg,#2563eb,#06b6d4); border-radius:2px; }
+    #back-to-top { transition:all 0.3s; opacity:0; transform:translateY(10px); }
+    #back-to-top.show { opacity:1; transform:translateY(0); }
+
+    /* Hero */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background-image: url('images/img.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(31,71,187,1) 0%, rgba(35,88,217,1) 27%, rgba(30,83,173,0.56) 50%);
+    }
+
+    /* Reveal animation */
+    .reveal { opacity:0; transform:translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav id="navbar" class="fixed w-full top-0 z-50 py-4">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="Logo Lumintu" class="h-10 w-auto"
+           onerror="this.onerror=null;this.style.display='none';document.getElementById('logo-fallback').style.display='flex'"/>
+      <div id="logo-fallback" class="w-10 h-10 gradient-bg rounded-xl items-center justify-center shadow-lg hidden">
+        <span class="text-white font-black text-lg">L</span>
+      </div>
+      <div>
+        <div id="nb-main" class="font-black text-white text-sm leading-tight">Adhi Rajasa</div>
+        <div id="nb-sub" class="text-xs text-cyan-300 font-semibold">Satria</div>
+      </div>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#home"      class="nav-link text-sm font-semibold text-white/90 hover:text-white transition-colors">Home</a>
+      <a href="#tentang"   class="nav-link text-sm font-semibold text-white/90 hover:text-white transition-colors">Tentang Kami</a>
+      <a href="#layanan"   class="nav-link text-sm font-semibold text-white/90 hover:text-white transition-colors">Layanan</a>
+      <a href="#portfolio" class="nav-link text-sm font-semibold text-white/90 hover:text-white transition-colors">Portfolio</a>
+      <a href="#kontak"    class="bg-white text-blue-700 text-sm font-bold px-5 py-2.5 rounded-xl shadow-md hover:bg-blue-50 transition-all">Kontak</a>
+    </div>
+    <button id="menu-btn" class="md:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t mt-4 px-6 py-4 space-y-3 shadow-lg">
+    <a href="#home"      class="block text-sm font-semibold text-gray-700 hover:text-blue-600">Home</a>
+    <a href="#tentang"   class="block text-sm font-semibold text-gray-700 hover:text-blue-600">Tentang Kami</a>
+    <a href="#layanan"   class="block text-sm font-semibold text-gray-700 hover:text-blue-600">Layanan</a>
+    <a href="#portfolio" class="block text-sm font-semibold text-gray-700 hover:text-blue-600">Portfolio</a>
+    <a href="#kontak"    class="block text-sm font-semibold text-white bg-blue-600 px-4 py-2 rounded-xl text-center">Kontak</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="w-full px-12 py-32 relative z-10">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 text-sm px-4 py-2 rounded-full mb-6 font-medium">
+        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+        CV. Adhi Rajasa Satria — Berdiri 20 Mei 2022
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4">
+        Profesional,<br/><span class="text-cyan-300">Loyal,</span> dan<br/><span class="text-yellow-300">Handal</span>
+      </h1>
+      <p class="text-xl text-white/80 font-semibold mt-4 mb-3">Terpercaya di Setiap Karya!</p>
+      <p class="text-white/70 text-base max-w-xl mb-10 leading-relaxed">
+        Bergerak di bidang konstruksi, instalasi teknik, serta pengadaan barang dan jasa dengan komitmen memberikan layanan profesional dan berkualitas bagi proyek pemerintah maupun swasta.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#kontak" class="bg-white text-blue-700 font-bold px-8 py-4 rounded-2xl hover:bg-cyan-50 transition-all shadow-lg hover:-translate-y-1 inline-flex items-center gap-2">
+          <i class="fas fa-paper-plane"></i> Hubungi Kami
+        </a>
+        <a href="#layanan" class="border-2 border-white/40 text-white font-bold px-8 py-4 rounded-2xl hover:bg-white/10 transition-all inline-flex items-center gap-2">
+          <i class="fas fa-briefcase"></i> Lihat Layanan
+        </a>
+      </div>
+     
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
+    <i class="fas fa-chevron-down text-xl"></i>
+  </div>
+</section>
+
+<!-- ============ VISI MISI ============ -->
+<section class="py-24 section-gray reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="section-divider mx-auto mb-4"></div>
+      <h2 class="text-4xl font-black text-gray-900">Visi <span class="gradient-text">&amp;</span> Misi</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card-hover bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-eye text-blue-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-black text-gray-900 mb-4">Visi</h3>
+        <div class="section-divider mb-5"></div>
+        <p class="text-gray-600 leading-relaxed">Menjadi perusahaan yang profesional, terpercaya, dan berdaya saing tinggi dalam bidang konstruksi dan pengadaan barang serta jasa.</p>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 shadow-lg">
+        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-bullseye text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-black text-white mb-4">Misi</h3>
+        <div class="h-1 w-14 bg-cyan-300 rounded mb-5"></div>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3 text-white/90 text-sm"><i class="fas fa-check-circle text-cyan-300 mt-0.5 flex-shrink-0"></i>Memberikan layanan berkualitas dengan standar profesional.</li>
+          <li class="flex items-start gap-3 text-white/90 text-sm"><i class="fas fa-check-circle text-cyan-300 mt-0.5 flex-shrink-0"></i>Mengutamakan kepuasan klien dalam setiap proyek yang dikerjakan.</li>
+          <li class="flex items-start gap-3 text-white/90 text-sm"><i class="fas fa-check-circle text-cyan-300 mt-0.5 flex-shrink-0"></i>Mengembangkan usaha dengan inovasi dan teknologi.</li>
+          <li class="flex items-start gap-3 text-white/90 text-sm"><i class="fas fa-check-circle text-cyan-300 mt-0.5 flex-shrink-0"></i>Membangun hubungan kerja yang baik dengan mitra dan pelanggan.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TENTANG KAMI ============ -->
+<section id="tentang" class="py-24 section-white reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="section-divider mb-4"></div>
+        <h2 class="text-4xl font-black text-gray-900 mb-6">Tentang <span class="gradient-text">Kami</span></h2>
+        <p class="text-gray-600 leading-relaxed mb-5">
+          <strong class="text-gray-900">CV Adhi Rajasa Satria</strong> bergerak di bidang konstruksi, instalasi teknik, serta pengadaan barang dan jasa, termasuk pekerjaan pembangunan, instalasi elektrikal, serta layanan teknologi dan dukungan proyek.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-5">
+          Berdiri sejak <strong class="text-blue-600">22 Mei 2022</strong>, perusahaan ini mengedepankan kualitas pelayanan serta berkomitmen memberikan kepuasan kepada klien. Dengan mengutamakan profesionalisme serta pemanfaatan teknologi yang tepat, kami berupaya memberikan layanan yang optimal dan terpercaya.
+
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          CV Adhi Rajasa Satria berkeyakinan menjadi perusahaan yang akan terus berkembang serta mampu bersaing dan memberikan kontribusi positif dalam mendukung berbagai proyek pembangunan di Indonesia.
+        </p>
+        <blockquote class="border-l-4 border-blue-600 pl-5 py-3 bg-blue-50 rounded-r-xl">
+          <p class="text-blue-800 font-semibold italic text-sm">"Kami menyediakan berbagai layanan profesional untuk memenuhi kebutuhan bisnis dan teknologi anda. "</p>
+        </blockquote>
+      </div>
+      <div class="grid grid-cols-2 gap-5">
+        <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-7 border border-blue-100">
+          <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-shield-alt text-white text-lg"></i></div>
+          <h4 class="font-black text-gray-900 mb-2">Dapat Diandalkan</h4>
+          <p class="text-gray-600 text-xs leading-relaxed">Berkomitmen memberikan layanan berkualitas dalam pengadaan barang, jasa dan engineering</p>
+        </div>
+        <div class="card-hover bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-3xl p-7 border border-cyan-100">
+          <div class="w-12 h-12 bg-cyan-600 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-handshake text-white text-lg"></i></div>
+          <h4 class="font-black text-gray-900 mb-2">Loyal</h4>
+          <p class="text-gray-600 text-xs leading-relaxed">Membangun kepercayaan dan hubungan jangka panjang dengan klien dan mitra</p>
+        </div>
+        <div class="card-hover bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-3xl p-7 border border-indigo-100">
+          <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-chart-line text-white text-lg"></i></div>
+          <h4 class="font-black text-gray-900 mb-2">Kaizen</h4>
+          <p class="text-gray-600 text-xs leading-relaxed">Terus meningkatkan efisiensi dan kualitas untuk bersaing di era globalisasi</p>
+        </div>
+        <div class="card-hover bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-3xl p-7 border border-yellow-100">
+          <div class="w-12 h-12 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4"><i class="fas fa-star text-white text-lg"></i></div>
+          <h4 class="font-black text-gray-900 mb-2">Joy</h4>
+          <p class="text-gray-600 text-xs leading-relaxed">Menciptakan lingkungan kerja positif demi layanan dan peluang karier terbaik</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAYANAN ============ -->
+<section id="layanan" class="py-24 section-gray reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="section-divider mx-auto mb-4"></div>
+      <h2 class="text-4xl font-black text-gray-900">Layanan <span class="gradient-text">Kami</span></h2>
+      <p class="text-gray-500 mt-3 max-w-2xl mx-auto">Kami menyediakan berbagai layanan profesional untuk memenuhi kebutuhan bisnis dan teknologi Anda.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Jasa Konstruksi -->
+      <div class="card-hover bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+        <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-hard-hat text-white text-2xl"></i>
+        </div>
+        <h3 class="font-black text-gray-900 text-lg mb-3">Jasa Konstruksi Bangunan</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Melayani pembangunan berbagai jenis bangunan seperti rumah, gedung perkantoran, dan fasilitas lainnya dengan standar kualitas yang baik.</p>
+      </div>
+
+      <!-- Instalasi Elektrikal & Mekanikal -->
+      <div class="card-hover bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-bolt text-white text-2xl"></i>
+        </div>
+        <h3 class="font-black text-gray-900 text-lg mb-3">Instalasi Elektrikal dan Mekanikal</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Menyediakan layanan instalasi sistem kelistrikan, elektronik, dan sistem mekanikal untuk mendukung operasional bangunan.</p>
+      </div>
+
+      <!-- Pengadaan Barang dan Jasa -->
+      <div class="card-hover bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+        <div class="w-14 h-14 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-boxes text-white text-2xl"></i>
+        </div>
+        <h3 class="font-black text-gray-900 text-lg mb-3">Pengadaan Barang dan Jasa</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Menyediakan berbagai kebutuhan barang dan jasa untuk proyek pemerintah maupun swasta secara profesional dan terpercaya.</p>
+      </div>
+
+      <!-- Teknologi Informasi -->
+      <div class="card-hover bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+        <div class="w-14 h-14 bg-yellow-500 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-laptop-code text-white text-2xl"></i>
+        </div>
+        <h3 class="font-black text-gray-900 text-lg mb-3">Layanan IT</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Menyediakan solusi teknologi seperti instalasi sistem komputer, jaringan, dan dukungan teknologi informasi.</p>
+      </div>
+
+      <!-- Konsultan & Dukungan Proyek -->
+      <div class="card-hover bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+        <div class="w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-clipboard-list text-white text-2xl"></i>
+        </div>
+        <h3 class="font-black text-gray-900 text-lg mb-3">Konsultasi Proyek</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Memberikan konsultasi dalam pelaksanaan proyek konstruksi maupun pengadaan.</p>
+      </div>
+
+      <!-- Butuh Solusi Lainnya -->
+      <div class="card-hover bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 shadow-lg flex flex-col justify-between">
+        <div>
+          <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-comments text-white text-2xl"></i>
+          </div>
+          <h3 class="font-black text-white text-lg mb-3">Butuh Solusi Lainnya?</h3>
+          <p class="text-white/70 text-sm leading-relaxed">Kami siap berdiskusi untuk menemukan solusi terbaik bagi kebutuhan bisnis Anda.</p>
+        </div>
+        <a href="#kontak" class="mt-6 bg-white text-blue-700 font-bold text-sm px-5 py-3 rounded-xl text-center block hover:bg-cyan-50 transition-colors">Hubungi Kami</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio" class="py-24 section-white reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <div class="section-divider mx-auto mb-4"></div>
+      <h2 class="text-4xl font-black text-gray-900">Portfolio <span class="gradient-text">Kami</span></h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button onclick="filterPortfolio('semua',this)"     class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold border  border-gray-200 text-gray-600 transition-all">Semua</button>
+      <button onclick="filterPortfolio('Kontruksi',this)"   class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 transition-all">Kontruksi Bangunan</button>
+      <button onclick="filterPortfolio('it',this)"        class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 transition-all">Layanan IT</button>
+      <button onclick="filterPortfolio('electrical',this)"class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 transition-all">Instalasi Elektro & Mekanikal</button>
+      <button onclick="filterPortfolio('Konsultasi',this)"     class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 transition-all">Konsultasi Proyek</button>
+      <button onclick="filterPortfolio('pengadaan',this)" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold border border-gray-200 text-gray-600 transition-all">Pengadaan Barang &amp; Jasa</button>
+    </div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+  <div class="portfolio-item card-hover rounded-3xl overflow-hidden border border-gray-100 shadow-sm" data-category="Kontruksi">
+    <img src="images/portfolio-1.jpg" alt="Jasa Kontruksi Bangunan" class="w-full h-64 object-cover" loading="lazy"/>
+  </div>
+
+  <div class="portfolio-item card-hover rounded-3xl overflow-hidden border border-gray-100 shadow-sm" data-category="electrical">
+    <img src="images/portfolio-2.jpg" alt="Instalasi Elektro & Mekanikal" class="w-full h-64 object-cover" loading="lazy"/>
+  </div>
+
+  <div class="portfolio-item card-hover rounded-3xl overflow-hidden border border-gray-100 shadow-sm" data-category="pengadaan">
+    <img src="images/portfolio-3.jpg" alt="Pengadaan Barang & Jasa" class="w-full h-64 object-cover" loading="lazy"/>
+  </div>
+
+  <div class="portfolio-item card-hover rounded-3xl overflow-hidden border border-gray-100 shadow-sm" data-category="it">
+    <img src="images/portfolio-4.jpg" alt="Layanan IT" class="w-full h-64 object-cover" loading="lazy"/>
+  </div>
+
+  <div class="portfolio-item card-hover rounded-3xl overflow-hidden border border-gray-100 shadow-sm" data-category="Konsultasi">
+    <img src="images/portfolio-5.jpg" alt="Konsultasi Proyek" class="w-full h-64 object-cover" loading="lazy"/>
+  </div>
+
+  <div class="portfolio-item card-hover rounded-3xl overflow-hidden border border-gray-100 shadow-sm" data-category="it">
+    <img src="images/portfolio-6.jpg" alt="Layanan IT" class="w-full h-64 object-cover" loading="lazy"/>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ============ KLIEN ============ -->
+<section class="py-20 section-gray reveal">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <div class="section-divider mx-auto mb-4"></div>
+      <h2 class="text-4xl font-black text-gray-900">Klien <span class="gradient-text">Kami</span></h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">
+        Kami telah bekerja sama dengan berbagai perusahaan dan organisasi terkemuka.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+      <!-- Jateng -->
+     <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+  <div class="h-20 flex items-center justify-center mx-auto mb-4">
+    <img src="images/Pemerintah Provinsi Jawa Tengah.png" 
+         class="h-16 object-contain">
+        </div>
+        <h4 class="font-bold text-gray-800 text-sm">Pemerintah Provinsi Jawa Tengah</h4>
+      </div>
+
+      <!-- Kab Semarang -->
+      <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+        <div class="w-14 h-14 flex items-center justify-center mx-auto mb-4">
+          <img src="images/Pemerintah Kabupaten Semarang.png" 
+               class="h-12 object-contain">
+        </div>
+        <h4 class="font-bold text-gray-800 text-sm">Pemerintah Kabupaten Semarang</h4>
+      </div>
+
+      <!-- Kota Semarang -->
+      <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+        <div class="w-14 h-14 flex items-center justify-center mx-auto mb-4">
+          <img src="images/Pemerintah Kota Semarang.png" 
+               class="h-12 object-contain">
+        </div>
+        <h4 class="font-bold text-gray-800 text-sm">Pemerintah Kota Semarang</h4>
+      </div>
+
+      <!-- PLN -->
+      <div class="card-hover bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+        <div class="w-14 h-14 flex items-center justify-center mx-auto mb-4">
+          <img src="images/PLN.png" 
+               class="h-12 object-contain">
+        </div>
+        <h4 class="font-bold text-gray-800 text-sm">PLN</h4>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section id="kontak" class="py-24 section-white reveal">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="section-divider mx-auto mb-4"></div>
+      <h2 class="text-4xl font-black text-gray-900">Kontak <span class="gradient-text">Kami</span></h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-5">
+        <div class="flex items-start gap-5 p-6 rounded-2xl bg-white/80 border border-gray-100">
+          <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0"><i class="fas fa-map-marker-alt text-white"></i></div>
+          <div><h4 class="font-bold text-gray-900 mb-1">Alamat</h4><p class="text-gray-600 text-sm">Kecamatan Ungaran Timur Kab. Semarang, Jawa Tengah</p></div>
+        </div>
+        <div class="flex items-start gap-5 p-6 rounded-2xl bg-white/80 border border-gray-100">
+          <div class="w-12 h-12 bg-green-600 rounded-2xl flex items-center justify-center flex-shrink-0"><i class="fab fa-whatsapp text-white"></i></div>
+          <div><h4 class="font-bold text-gray-900 mb-1">Telepon / WhatsApp</h4><a href="tel:+nomor-telepon-cp" class="text-green-600 font-semibold hover:underline">+62-856-4107-9055</a></div>
+        </div>
+        <div class="flex items-start gap-5 p-6 rounded-2xl bg-white/80 border border-gray-100">
+          <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center flex-shrink-0"><i class="fas fa-envelope text-white"></i></div>
+          <div><h4 class="font-bold text-gray-900 mb-1">Email</h4><a href="mailto:adhiRajasasatria@gmail.com" class="text-red-500 font-semibold hover:underline text-sm">adhirajasasatria026@gmail.com</a></div>
+        </div>
+        <!-- <a href="https://wa.me/+6285641079055" target="_blank" class="flex items-center justify-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-2xl transition-all shadow-lg">
+          <i class="fab fa-whatsapp text-xl"></i> Chat via WhatsApp
+        </a> -->
+      </div>
+      <div class="bg-white/80 rounded-3xl p-8 border border-gray-100">
+        <h3 class="text-xl font-black text-gray-900 mb-6">Kirim Pesan</h3>
+        <div class="space-y-4">
+          <div><label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label><input id="inp-nama" type="text" placeholder="Nama Anda" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 bg-white"/></div>
+          <div><label class="block text-sm font-semibold text-gray-700 mb-2">Email</label><input id="inp-email" type="email" placeholder="email@anda.com" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 bg-white"/></div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Layanan</label>
+            <select id="inp-layanan" class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 bg-white">
+              <option value="">Pilih Layanan</option>
+              <option>Konsultasi Proyek</option>
+              <option>Kontruksi Bangunan</option>
+              <option>Instalasi Elektro & Mekanikal</option>
+              <option>Pengadaan Barang & Jasa</option>
+              <option>Layanan IT</option>
+            </select>
+          </div>
+          <div><label class="block text-sm font-semibold text-gray-700 mb-2">Pesan</label><textarea id="inp-pesan" rows="4" placeholder="Deskripsikan kebutuhan Anda..." class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 resize-none bg-white"></textarea></div>
+          <button onclick="sendMessage()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i> Kirim via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="gradient-bg text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-10 pb-10 border-b border-white/20">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src="images/logo.png" alt="Logo" class="h-10 w-auto brightness-0 invert" onerror="this.style.display='none'"/>
+          <div class="font-black">CV Adhi Rajasa Satria</div>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">Kecamatan Ungaran Timur Kab. Semarang, Jawa Tengah</p>
+        <div class="space-y-2 text-sm text-white/70">
+          <div><i class="fas fa-phone mr-2 text-cyan-300"></i>+62-856-4107-9055</div>
+          <div><i class="fas fa-envelope mr-2 text-cyan-300"></i>adhirajasasatria026@gmail.com</div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-black mb-5">Useful Links</h4>
+        <ul class="space-y-2 text-white/70 text-sm">
+          <li><a href="#home"      class="hover:text-white transition-colors">&#8250; Home</a></li>
+          <li><a href="#tentang"   class="hover:text-white transition-colors">&#8250; Tentang Kami</a></li>
+          <li><a href="#layanan"   class="hover:text-white transition-colors">&#8250; Layanan</a></li>
+          <li><a href="#portfolio" class="hover:text-white transition-colors">&#8250; Portofolio</a></li>
+          <li><a href="#kontak"    class="hover:text-white transition-colors">&#8250; Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-black mb-5">Layanan</h4>
+        <ul class="space-y-2 text-white/70 text-sm">
+          <li><a href="#layanan" class="hover:text-white transition-colors">&#8250; Jasa Konstruksi</a></li>
+          <li><a href="#layanan" class="hover:text-white transition-colors">&#8250; Instalasi Elektrikal & Mekanikal</a></li>
+          <li><a href="#layanan" class="hover:text-white transition-colors">&#8250; EPengadaan Barang dan Jasa</a></li>
+          <li><a href="#layanan" class="hover:text-white transition-colors">&#8250; Layanan IT</a></li>
+          <li><a href="#layanan" class="hover:text-white transition-colors">&#8250; Konsultasi Proyek</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 text-center text-white/50 text-sm">&copy; Copyright CV Adhi Rajasa Satria. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl shadow-lg flex items-center justify-center z-50">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  const navbar  = document.getElementById('navbar');
+  const btt     = document.getElementById('back-to-top');
+  const nbMain  = document.getElementById('nb-main');
+  const nbSub   = document.getElementById('nb-sub');
+  const menuBtn = document.getElementById('menu-btn');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.style.cssText = 'background:rgba(255,255,255,0.97);box-shadow:0 2px 20px rgba(0,0,0,0.08);backdrop-filter:blur(10px);';
+      document.querySelectorAll('#navbar .nav-link').forEach(l => l.style.color = '#374151');
+      menuBtn.style.color = '#374151';
+      nbMain.style.color  = '#111827';
+      nbSub.style.color   = '#2563eb';
+      btt.classList.add('show');
+    } else {
+      navbar.style.cssText = '';
+      document.querySelectorAll('#navbar .nav-link').forEach(l => l.style.color = 'rgba(255,255,255,0.9)');
+      menuBtn.style.color = 'white';
+      nbMain.style.color  = 'white';
+      nbSub.style.color   = '#67e8f9';
+      btt.classList.remove('show');
+    }
+  });
+
+  menuBtn.addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+
+  function filterPortfolio(cat, btn) {
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.style.display = (cat === 'semua' || item.dataset.category === cat) ? '' : 'none';
+    });
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.style.background = ''; b.style.color = '#4b5563'; b.style.borderColor = '#e5e7eb';
+    });
+    btn.style.background = '#2563eb'; btn.style.color = 'white'; btn.style.borderColor = '#2563eb';
+  }
+
+  function sendMessage() {
+    const nama    = document.getElementById('inp-nama').value;
+    const email   = document.getElementById('inp-email').value;
+    const layanan = document.getElementById('inp-layanan').value;
+    const pesan   = document.getElementById('inp-pesan').value;
+    if (!nama || !email || !pesan) { alert('Mohon lengkapi semua field.'); return; }
+    const msg = `Halo CV Adhi Rajasa Satria%0ANama: ${encodeURIComponent(nama)}%0AEmail: ${encodeURIComponent(email)}%0ALayanan: ${encodeURIComponent(layanan)}%0APesan: ${encodeURIComponent(pesan)}`;
+    window.open(`https://wa.me/+6285641079055?text=${msg}`, '_blank');
+  }
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer  = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
